@@ -1,0 +1,10 @@
+FROM centos:centos7.9.2009
+MAINTAINER I7b0
+RUN mkdir /usr/java
+ADD jdk-21_linux-x64_bin.tar.gz /usr/java/
+ENV JAVA_HOME=/usr/java/jdk-21.0.10
+ENV PATH=$JAVA_HOME/bin:$PATH
+COPY mc1.20 /root/mc1.20
+RUN chmod a+x /root/mc1.20/start.sh
+EXPOSE 25565
+CMD ["/bin/bash","/root/mc1.20/start.sh"]
